@@ -132,7 +132,6 @@ class GaussianMLPPolicy(StochasticPolicy, LayersPowered, Serializable):
 
             LayersPowered.__init__(self, [l_mean, l_std_param])
             super(GaussianMLPPolicy, self).__init__(env_spec)
-
             dist_info_sym = self.dist_info_sym(
                 mean_network.input_layer.input_var, dict())
             mean_var = dist_info_sym["mean"]

@@ -1,3 +1,10 @@
+from __future__ import print_function
+#from __future__ import unicode_literals
+
+
+import matplotlib
+matplotlib.use('Agg')
+
 import gym
 import argparse
 import calendar
@@ -28,6 +35,7 @@ import os
 
 import os.path as osp
 from rllab import config
+import pdb
 
 parser = argparse.ArgumentParser()
 # Logger Params
@@ -131,6 +139,8 @@ args = parser.parse_args()
 
 from rllab.config_personal import expert_trajs_path, model_path
 
+#pdb.set_trace()
+
 if args.nonlinearity == 'tanh':
     nonlinearity = tf.nn.tanh
 elif args.nonlinearity == 'relu':
@@ -205,6 +215,7 @@ initial_obs_std[initial_obs_std < args.norm_tol] = 1.0
 initial_obs_var = np.square(initial_obs_std)
 
 # create normalize environments
+pdb.set_trace()
 g_env = normalize(GymEnv(env_id),
                   initial_obs_mean=initial_obs_mean,
                   initial_obs_var=initial_obs_var,
@@ -304,6 +315,7 @@ algo = GAIL(
     gail_batch_size=args.gail_batch_size,
     max_path_length=args.max_traj_len,
     n_itr=args.n_iter,
+    plot = True,
     discount=args.discount,
     step_size=args.trpo_step_size,
     force_batch_sampler=True,

@@ -8,6 +8,7 @@ from gym.spaces import Box
 import os
 
 import time
+import pdb
 
 #from path_to_Auto2D import LQG_path, auto1D_path, auto2D_path, pulltraces_path, passive_aggressive_path
 from rllab.config_personal import auto2D_path
@@ -38,7 +39,7 @@ class JuliaEnv(object):
         self.j = julia.Julia()
         self.j.eval("include(\"" + julia_env_dict[env_name] + "\")")
         self.j.using(env_name)
-
+        #pdb.set_trace()
         self.simparams = self.j.gen_simparams(batch_size, param_dict)
 
         if GX:

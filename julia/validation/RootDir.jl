@@ -1,1 +1,1 @@
-ROOT_FILEPATH = "/home/deepdrive/gail-driver/"
+ROOT_FILEPATH = "/home/oolabiyi/Projects/oracle/gail-driver/"

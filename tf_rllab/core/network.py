@@ -237,7 +237,7 @@ class RewardMLP(MLP):
         logits = self.output_layer.get_logits_for(
             L.get_output(self.layers[-2]))
         #logits = L.get_output(self.layers[-1])
-        loss = tf.nn.sigmoid_cross_entropy_with_logits(logits, self.target_var)
+        loss = tf.nn.sigmoid_cross_entropy_with_logits(logits=logits, labels=self.target_var)
         #ent_B = tfutil.logit_bernoulli_entropy(logits)
         #self.obj = tf.reduce_sum(loss_B - self.ent_reg_weight * ent_B)
         return tf.reduce_sum(loss)
